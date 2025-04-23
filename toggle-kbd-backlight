@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+LED_PATH="/sys/class/leds/input7::scrolllock/brightness"
+current=$(cat "$LED_PATH")
+
+if [ "$current" -eq 1 ]; then
+  echo 0 | sudo tee "$LED_PATH"
+else
+  echo 1 | sudo tee "$LED_PATH"
+fi
